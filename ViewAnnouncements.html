@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html >
+<head>
+    
+    <title>View Announcements</title>
+</head>
+<body>
+    <h1>View Announcements</h1>
+     
+    <ul id="list">
+
+    </ul>
+
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    
+    
+    <script>
+    // Your web app's Firebase configuration
+   
+    var firebaseConfig = {
+    apiKey: "AIzaSyCoXqBGvYHP2wcXLGnu8iR1DHY13An13Vo",
+    authDomain: "eresapplication.firebaseapp.com",
+    databaseURL: "https://eresapplication-default-rtdb.firebaseio.com",
+    projectId: "eresapplication",
+    storageBucket: "eresapplication.appspot.com",
+    messagingSenderId: "930888883325",
+    appId: "1:930888883325:web:c8ca7e2c05070ee346e514",
+  
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var annNo=0;
+
+    function addAnnouncementsToList(title,description){
+
+        var ls = document.getElementById('list');
+        var header = document.createElement('h2');
+
+        var _title = document.createElement('li');
+        var _description = document.createElement('li');
+
+        header.innerHTML= 'Announcement-'+ (++annNo)
+
+        _title.innerHTML='Title: '+ title;
+        _description.innerHTML='Description: '+ description;
+
+        ls.appendChild(header);
+        ls.appendChild(_title);
+        ls.appendChild(_description);
+        
+    }
+
+    function GetAllData(){
+        firebase.database().ref('Announcements').once('value',function(snapshot){
+         snapshot.forEach(
+             function(ChildSnapshot){
+                 let title = ChildSnapshot.val().title;
+                 let description = ChildSnapshot.val().description;
+                 addAnnouncementsToList(title,description);
+             }
+         );
+        });
+    }
+
+    window.onload(GetAllData())
+    </script>
+
+    
+</body>
+</html>

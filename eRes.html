@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>eRes Application</title>
+
+</head>
+<body>
+     <div id="Register">
+           <input type="text" name="email" id="email" placeholder="Enter your email"><br><br>
+           <input type="text" name="password" id="password" placeholder="Enter your password"><br><br>
+           <input type="text" name="firstname" id="firstname" placeholder="Enter your name"><br><br>
+           <input type="text" name="surname" id="surname" placeholder="Enter your surname"><br><br>
+           <input type="number" name="student number" id="studnum" placeholder="Enter your student number"><br><br>
+           
+           <button onclick="RegisterUser()">Register</button>
+           <button onclick="Login()">Login</button>
+     </div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    
+    <script>
+    // Your web app's Firebase configuration
+   
+    var firebaseConfig = {
+    apiKey: "AIzaSyCoXqBGvYHP2wcXLGnu8iR1DHY13An13Vo",
+    authDomain: "eresapplication.firebaseapp.com",
+    databaseURL: "https://eresapplication-default-rtdb.firebaseio.com",
+    projectId: "eresapplication",
+    storageBucket: "eresapplication.appspot.com",
+    messagingSenderId: "930888883325",
+    appId: "1:930888883325:web:c8ca7e2c05070ee346e514",
+  
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+   
+
+    function RegisterUser(){
+
+     var email=document.getElementById('email').value;
+     var password=document.getElementById('password').value;
+     var firstname=document.getElementById('firstname').value;
+     var surname=document.getElementById('surname').value;
+     var studnum=document.getElementById('studnum').value;
+    
+
+     firebase.auth().createUserWithEmailAndPassword(email,password).then(function(){
+           alert('User Registered successfully');
+           var id =firebase.auth().currentUser.uid;
+           firebase.database().ref('User/'+id).set({
+            Firstname:firstname,
+            Surname:surname,
+            Studnum:studnum
+           });
+
+     }).catch(function(error){  
+           var errorcode=error.code;
+           var errormessage=error.message;
+     });
+    }
+
+    function Login(){
+        var email=document.getElementById('email').value;
+        var password=document.getElementById('password').value;
+
+        firebase.auth().signInWithEmailAndPassword(email,password).then(function(){
+
+        var id = firebase.auth().currentUser.uid;
+        window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp/WebApp/eResApp/PostAnnouncements.html");
+        localStorage.setItem('id',id);
+         
+        }).catch(function(error){
+            var errorCode = error.code;
+            var errormessage = error.message;
+
+        });
+    }
+  
+</script>
+
+
+
+</body>
+</html>

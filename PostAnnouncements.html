@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+        <title>
+             <h1>Post Announcements</h1>
+        </title>
+</head>
+<body>
+        <h1>Post Announcements</h1>
+   
+        <div id="PostAnn">
+                <div>
+                <label for="title">Title</label>
+                </div>
+                <div>
+                <input type="text"  name="title" id="title" placeholder="Enter title"><br><br>
+                </div>
+               
+                <div>
+                <label for="description">Description</label>
+                </div>
+                <div>
+                <input type="text"  name="description" id="description" placeholder="Enter description" size="50"><br><br>
+                </div>
+
+                <button onclick="PostAnn()">Post</button>
+                
+                <label for="user">Created by:</label>
+                <p1 id="firstname"></p1>
+                <p1 id="surname"></p1>
+                      
+          </div>
+     
+
+
+   <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    
+    <script>
+    // Your web app's Firebase configuration
+   
+    var firebaseConfig = {
+    apiKey: "AIzaSyCoXqBGvYHP2wcXLGnu8iR1DHY13An13Vo",
+    authDomain: "eresapplication.firebaseapp.com",
+    databaseURL: "https://eresapplication-default-rtdb.firebaseio.com",
+    projectId: "eresapplication",
+    storageBucket: "eresapplication.appspot.com",
+    messagingSenderId: "930888883325",
+    appId: "1:930888883325:web:c8ca7e2c05070ee346e514",
+  
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    function PostAnn(){
+        var title=document.getElementById('title').value;
+        var description=document.getElementById('description').value;
+
+        
+           alert('Announcement Posted successfully');
+           
+          var rootRef = firebase.database().ref();
+          var annRef = rootRef.child('Announcements/')
+          var newAnnRef = annRef.push();
+          newAnnRef.set({
+             title:title,
+             description:description
+          });
+          
+    }
+
+   </script>
+   <script type="text/javascript">
+      var userId=localStorage.getItem('id');
+      firebase.database().ref('User/'+userId).once('value').then(
+              function(snapshot){
+             var firstname=(snapshot.val() && snapshot.val().Firstname);
+             var surname=(snapshot.val() && snapshot.val().Surname);
+
+             document.getElementById('firstname').innerHTML=firstname;
+             document.getElementById('surname').innerHTML=surname;
+
+              });
+   </script>
+    
+</body>
+</html>
