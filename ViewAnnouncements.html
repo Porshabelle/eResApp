@@ -6,11 +6,20 @@
 </head>
 <body>
     <h1>View Announcements</h1>
-     
-    <ul id="list">
-
-    </ul>
-
+    <p1 id="firstname"></p1>
+    <table>
+           <thead>
+                 <th>Title</th>
+                 <th>Description</th>
+                 <th>Posted by</th>
+           </thead>
+           <tbody id="tbody1">
+             
+           </tbody>
+         
+    </table>
+   
+  
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
     
     
@@ -30,42 +39,64 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    var annNo=0;
-
-    function addAnnouncementsToList(title,description){
-
-        var ls = document.getElementById('list');
-        var header = document.createElement('h2');
-
-        var _title = document.createElement('li');
-        var _description = document.createElement('li');
-
-        header.innerHTML= 'Announcement-'+ (++annNo)
-
-        _title.innerHTML='Title: '+ title;
-        _description.innerHTML='Description: '+ description;
-
-        ls.appendChild(header);
-        ls.appendChild(_title);
-        ls.appendChild(_description);
-        
-    }
-
     function GetAllData(){
-        firebase.database().ref('Announcements').once('value',function(snapshot){
-         snapshot.forEach(
-             function(ChildSnapshot){
-                 let title = ChildSnapshot.val().title;
-                 let description = ChildSnapshot.val().description;
-                 addAnnouncementsToList(title,description);
-             }
-         );
-        });
+
+      
+
+        firebase.database().ref('Announcements').once('value',
+       function(AllRecords){
+       AllRecords.forEach(
+           function(CurrentRecord){
+              var Title = CurrentRecord.val().title;
+              var Description = CurrentRecord.val().description;
+              var Firstname = CurrentRecord.val().firstname;
+              var Surname = CurrentRecord.val().surname;
+              var user = Firstname+" "+Surname;
+
+              AddAnnouncementsToTable(Title,Description,user)
+           }
+       );
+       });
     }
 
-    window.onload(GetAllData())
-    </script>
+    
 
+    window.onload= GetAllData;
+    
+    var annNo = 0;
+    function AddAnnouncementsToTable(Title,Description,user){
+        var tbody = document.getElementById('tbody1');
+        var  trow = document.createElement('tr');
+        var  td1 = document.createElement('td');
+        var  td2 = document.createElement('td');
+        var  td3 = document.createElement('td');
+        var  btn = document.createElement('button');
+        
+        td1.innerHTML= ++annNo;
+        td1.innerHTML= Title;
+        td2.innerHTML= Description;
+        td3.innerHTML= user; 
+        trow.appendChild(td1); 
+        trow.appendChild(td2);
+        trow.appendChild(td3);
+        tbody.appendChild(trow);
+        tbody.appendChild(btn);
+
+    }
+
+    </script>
+   <script type="text/javascript">
+    var userId=localStorage.getItem('id');
+    firebase.database().ref('User/'+userId).once('value').then(
+            function(snapshot){
+           var firstname=(snapshot.val() && snapshot.val().Firstname);
+           var surname=(snapshot.val() && snapshot.val().Surname);
+
+           document.getElementById('firstname').innerHTML=firstname;
+           document.getElementById('surname').innerHTML=surname;
+
+            });
+ </script>
     
 </body>
 </html>

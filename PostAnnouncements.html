@@ -31,6 +31,7 @@
                 <p1 id="surname"></p1>
                       
           </div>
+          <button onclick="ViewAnn()">View Announcements</button>
      
 
 
@@ -55,7 +56,8 @@
     function PostAnn(){
         var title=document.getElementById('title').value;
         var description=document.getElementById('description').value;
-
+        var firstname=document.getElementById('firstname').innerHTML;
+        var surname=document.getElementById('surname').innerHTML;
         
            alert('Announcement Posted successfully');
            
@@ -64,9 +66,17 @@
           var newAnnRef = annRef.push();
           newAnnRef.set({
              title:title,
-             description:description
+             description:description,
+             firstname:firstname,
+             surname:surname
+
           });
           
+    }
+
+    function ViewAnn()
+    {
+        window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/ViewAnnouncements.html");
     }
 
    </script>
