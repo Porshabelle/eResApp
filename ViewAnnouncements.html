@@ -7,18 +7,24 @@
 <body>
     <h1>View Announcements</h1>
     <p1 id="firstname"></p1>
-    <table>
+    <div>
+    <table id="table">
            <thead>
                  <th>Title</th>
                  <th>Description</th>
                  <th>Posted by</th>
            </thead>
            <tbody id="tbody1">
+              
              
            </tbody>
          
     </table>
-   
+    </div>
+    <div>
+        Details : <input type="text" name="description" id="description">
+
+    </div>
   
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
     
@@ -70,19 +76,36 @@
         var  td1 = document.createElement('td');
         var  td2 = document.createElement('td');
         var  td3 = document.createElement('td');
-        var  btn = document.createElement('button');
+        
         
         td1.innerHTML= ++annNo;
         td1.innerHTML= Title;
         td2.innerHTML= Description;
         td3.innerHTML= user; 
+       
         trow.appendChild(td1); 
         trow.appendChild(td2);
         trow.appendChild(td3);
         tbody.appendChild(trow);
-        tbody.appendChild(btn);
+       
+        selectedRow();
 
     }
+
+     function selectedRow()
+     {
+         var index,table = document.getElementById("table");
+         for(var i =0; i<table.rows.length; i++)
+         {
+            table.rows[i].onclick = function()
+            {
+             index = this.index;
+             console.log(index);
+            };
+         }
+         
+     }
+     
 
     </script>
    <script type="text/javascript">
