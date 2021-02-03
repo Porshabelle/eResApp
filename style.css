@@ -1,0 +1,141 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url(background.jpg);
+    background-size: cover;
+
+}
+.loginBox{
+
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    padding: 40px;
+    background: rgba(0, 0, 0, .8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 10px;
+
+ }
+
+ .registerBox{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    padding: 40px;
+    background: rgba(0, 0, 0, .8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 10px;
+ }
+
+ .postAnnBox{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    padding: 40px;
+    border-color: wheat;
+    box-sizing: border-box;
+    border-radius: 10px;
+ }
+
+ .loginBox .inputBox{
+      position: relative;      
+ }
+
+ .registerBox .inputBox{
+    position: relative;
+ }
+
+ .loginBox .inputBox input{
+    width:100 ;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+ }
+
+ .registerBox .inputBox input{
+   width:100 ;
+   padding: 10px 0;
+   font-size: 16px;
+   color: #fff;
+   margin-bottom: 30px;
+   border: none;
+   border-bottom: 1px solid #fff;
+   outline: none;
+   background: transparent;
+}
+
+.loginBox .inputBox label
+{
+   position: absolute;
+   top: 0;
+   left: 0;
+   padding: 10px 0;
+   font-size: 16px;
+   color: #fff;
+   pointer-events: none;
+   transition: .5s;
+}
+
+.registerBox .inputBox label
+{
+   position: absolute;
+   top: 0;
+   left: 0;
+   padding: 10px 0;
+   font-size: 16px;
+   color: #fff;
+   pointer-events: none;
+   transition: .5s;
+}
+
+.loginBox .inputBox input:focus ~ label,
+.loginBox .inputBox input:valid ~ label
+{
+   top: -20px;
+   left: 0;
+   color: cornflowerblue;
+   font-size: 12px;
+}
+
+.registerBox .inputBox input:focus ~ label,
+.registerBox .inputBox input:valid ~ label
+{
+   top: -20px;
+   left: 0;
+   color: cornflowerblue;
+   font-size: 12px;
+}
+
+.registerBox .selectBox label
+{
+   color: white;
+}
+
+table, th,td{
+   width: 60%;
+   margin: auto;
+   border: 1px solid white;
+   border-collapse: collapse;
+   text-align: center;
+   font-size: 20px;
+   table-layout: fixed;
+   background: rgba(0, 0, 0, .8);
+   box-shadow: 0 15px 25px rgba(0,0,0,.5);
+   color: white;
+   margin-top: 100px;
+}

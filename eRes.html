@@ -3,55 +3,131 @@
 <head>
     
     <title>eRes Application</title>
+    <link rel="stylesheet" href="style.css">
+
 
 </head>
 <body>
-     <div id="Register">
-           <input type="text" name="email" id="email" placeholder="Enter your email"><br><br>
-           <input type="text" name="password" id="password" placeholder="Enter your password"><br><br>
-           <input type="text" name="firstname" id="firstname" placeholder="Enter your name"><br><br>
-           <input type="text" name="surname" id="surname" placeholder="Enter your surname"><br><br>
-           <input type="number" name="student number" id="studnum" placeholder="Enter your student number"><br><br>
+     <div class="registerBox" id="Register" >
+
+      <div class="inputBox">
+           
+        <input type="text" name="firstname" id="firstname" required="">
+        <label>Firstname</label>
+      </div>
+
+      <div class="inputBox">
+          
+        <input type="text" name="surname" id="surname" required ="">
+        <label>Surname</label>
+      </div>
+      
+      <div class="inputBox">
+          
+        <input type="text" name="email" id="email" required="">
+        <label>Email Address</label>
+      </div>
+
+      <div class="inputBox">
+           
+        <input type="number" name="student number" id="studnum" required="">
+        <label>Student Number</label>
+      </div> 
+
+      <div class="inputBox">
+          
+        <input type="password" name="password" id="password" required="">
+        <label>Password</label>
+      </div>
+
+      <div class="inputBox">
+          
+        <input type="password" name="confpassword" id="confpassword" required="">
+        <label>Confirm Password</label>
+      </div>
+
+
+      <div class="selectBox">
+        <label>Residence</label>
+        <select id="residence">
+          <option>Mannheim Ladies</option>
+          <option>Welgemoed</option>
+          <option>Loggies</option>
+          <option>Eendrag</option>
+          <option>Gymnos</option>
+          <option>Graduandi</option>
+          <option>Welkom</option>
+          <option>Mannheim Men</option>
+          <option>Huis Technikon</option>
+        </select>
+       
+      </div><br><br>
+
+         <div class="selectBox">
+          <label>Role</label>
+          <select id="role">
+            <option>Student</option>
+            <option>Residence Manager</option>
+            <option>Mentor</option>
+            <option>Caretaker</option>
+          </select>
+         
+        </div><br><br>
            
            <button onclick="RegisterUser()">Register</button>
            <button onclick="Login()">Login</button>
      </div>
-
-    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    
+  
+    
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
+   
     
     <script>
-    // Your web app's Firebase configuration
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+          apiKey: "AIzaSyCoXqBGvYHP2wcXLGnu8iR1DHY13An13Vo",
+          authDomain: "eresapplication.firebaseapp.com",
+          databaseURL: "https://eresapplication-default-rtdb.firebaseio.com",
+          projectId: "eresapplication",
+          storageBucket: "eresapplication.appspot.com",
+          messagingSenderId: "930888883325",
+          appId: "1:930888883325:web:c8ca7e2c05070ee346e514",
+          measurementId: "G-LDR6RG84KQ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
    
-    var firebaseConfig = {
-    apiKey: "AIzaSyCoXqBGvYHP2wcXLGnu8iR1DHY13An13Vo",
-    authDomain: "eresapplication.firebaseapp.com",
-    databaseURL: "https://eresapplication-default-rtdb.firebaseio.com",
-    projectId: "eresapplication",
-    storageBucket: "eresapplication.appspot.com",
-    messagingSenderId: "930888883325",
-    appId: "1:930888883325:web:c8ca7e2c05070ee346e514",
-  
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
    
 
     function RegisterUser(){
+
+     
 
      var email=document.getElementById('email').value;
      var password=document.getElementById('password').value;
      var firstname=document.getElementById('firstname').value;
      var surname=document.getElementById('surname').value;
      var studnum=document.getElementById('studnum').value;
+     var confpassword=document.getElementById('confpassword').value;
+     var role=document.getElementById('role').value;
+     var residence =document.getElementById('residence').value;
     
 
      firebase.auth().createUserWithEmailAndPassword(email,password).then(function(){
            alert('User Registered successfully');
            var id =firebase.auth().currentUser.uid;
            firebase.database().ref('User/'+id).set({
+            ConfPassword:confpassword,
+            Email:email,
             Firstname:firstname,
-            Surname:surname,
-            Studnum:studnum
+            Password:password,
+            Residence:residence,
+            Role:role,
+            Studnum:studnum,
+            Surname:surname
            });
 
      }).catch(function(error){  
@@ -61,20 +137,7 @@
     }
 
     function Login(){
-        var email=document.getElementById('email').value;
-        var password=document.getElementById('password').value;
-
-        firebase.auth().signInWithEmailAndPassword(email,password).then(function(){
-
-        var id = firebase.auth().currentUser.uid;
-        window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/PostAnnouncements.html");
-        localStorage.setItem('id',id);
-         
-        }).catch(function(error){
-            var errorCode = error.code;
-            var errormessage = error.message;
-
-        });
+      window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/login.html");
     }
   
 </script>

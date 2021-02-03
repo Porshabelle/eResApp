@@ -3,10 +3,10 @@
 <head>
     
     <title>View Announcements</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>View Announcements</h1>
-    <p1 id="firstname"></p1>
     <div>
     <table id="table">
            <thead>
@@ -21,29 +21,25 @@
          
     </table>
     </div>
-    <div>
-        Details : <input type="text" name="description" id="description">
-
-    </div>
   
-    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
-    
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
+   
     
     <script>
-    // Your web app's Firebase configuration
-   
-    var firebaseConfig = {
-    apiKey: "AIzaSyCoXqBGvYHP2wcXLGnu8iR1DHY13An13Vo",
-    authDomain: "eresapplication.firebaseapp.com",
-    databaseURL: "https://eresapplication-default-rtdb.firebaseio.com",
-    projectId: "eresapplication",
-    storageBucket: "eresapplication.appspot.com",
-    messagingSenderId: "930888883325",
-    appId: "1:930888883325:web:c8ca7e2c05070ee346e514",
-  
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+          apiKey: "AIzaSyCoXqBGvYHP2wcXLGnu8iR1DHY13An13Vo",
+          authDomain: "eresapplication.firebaseapp.com",
+          databaseURL: "https://eresapplication-default-rtdb.firebaseio.com",
+          projectId: "eresapplication",
+          storageBucket: "eresapplication.appspot.com",
+          messagingSenderId: "930888883325",
+          appId: "1:930888883325:web:c8ca7e2c05070ee346e514",
+          measurementId: "G-LDR6RG84KQ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
 
     function GetAllData(){
 
@@ -87,27 +83,13 @@
         trow.appendChild(td2);
         trow.appendChild(td3);
         tbody.appendChild(trow);
-       
-        selectedRow();
+     
 
     }
 
-     function selectedRow()
-     {
-         var index,table = document.getElementById("table");
-         for(var i =0; i<table.rows.length; i++)
-         {
-            table.rows[i].onclick = function()
-            {
-             index = this.index;
-             console.log(index);
-            };
-         }
-         
-     }
      
 
-    </script>
+</script>
    <script type="text/javascript">
     var userId=localStorage.getItem('id');
     firebase.database().ref('User/'+userId).once('value').then(
