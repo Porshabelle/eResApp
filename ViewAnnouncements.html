@@ -51,6 +51,7 @@
            function(CurrentRecord){
               var Title = CurrentRecord.val().title;
               var Description = CurrentRecord.val().description;
+              var Role = CurrentRecord.val().Role;
               var Firstname = CurrentRecord.val().firstname;
               var Surname = CurrentRecord.val().surname;
               var user = Firstname+" "+Surname;
@@ -90,18 +91,7 @@
      
 
 </script>
-   <script type="text/javascript">
-    var userId=localStorage.getItem('id');
-    firebase.database().ref('User/'+userId).once('value').then(
-            function(snapshot){
-           var firstname=(snapshot.val() && snapshot.val().Firstname);
-           var surname=(snapshot.val() && snapshot.val().Surname);
-
-           document.getElementById('firstname').innerHTML=firstname;
-           document.getElementById('surname').innerHTML=surname;
-
-            });
- </script>
+ 
     
 </body>
 </html>

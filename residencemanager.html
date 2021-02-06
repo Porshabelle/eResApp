@@ -5,14 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+   
 </head>
 <body>
-    <div class="topnav" id="myTopnav">
-        <a href="PostAnnouncements.html">Post Announcements</a>
-       
+   
+<div class="container">
+ <div class="function_view" onclick="postAnn()">
+     <div class="left">
+        <i class="fas fa-upload"></i>
+     </div>
+     <div class="right">
+         <p class="title">Post Announcements</p>
+
+     </div>
+ </div>
+    
+ </div>   
+   <div class="function_view">
+    <div class="left">
+        <i class="fas fa-comments"></i>
+    </div>
+    <div class="right">
+    <p class="title">Respond to Complaints</p>
+            
+    </div>
+   </div>
+<div class="function_view">
+ <div class="left">
+    <i class="fas fa-edit"></i>
+ </div>
+ <div class="right">
+ <p class="title">Update Student Records</p>
+         
+ </div>
+</div>
+
+<div class="function_view">
+ <div class="left">
+    <i class="fab fa-facebook-messenger"></i>
+ </div>
+ <div class="right">
+ <p class="title">View Complaints</p>
+         
+ </div>
+</div>
+
+ <div class="function_view">
+    <div class="left">
+        <i class="fas fa-cog"></i>
+    </div>
+    <div class="right">
+    <p class="title">Manage Profile</p>
+            
+    </div>
+ </div>
+
+ <div class="function_view">
+    <div class="left">
+        <i class="fas fa-sign-out-alt"></i>
+    </div>
+    <div class="right">
+    <p class="title">Log Out</p>
+                
+    </div>      
+</div>  
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
+   
+    
+<script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyCoXqBGvYHP2wcXLGnu8iR1DHY13An13Vo",
+      authDomain: "eresapplication.firebaseapp.com",
+      databaseURL: "https://eresapplication-default-rtdb.firebaseio.com",
+      projectId: "eresapplication",
+      storageBucket: "eresapplication.appspot.com",
+      messagingSenderId: "930888883325",
+      appId: "1:930888883325:web:c8ca7e2c05070ee346e514",
+      measurementId: "G-LDR6RG84KQ"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+function postAnn()
+{
+    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/PostAnnouncements.html");
+}
+
+
+</script>
       
-      </div>
-
-
 </body>
 </html>

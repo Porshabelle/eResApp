@@ -6,6 +6,7 @@
              <h1>Announcements</h1>
         </title>
         <link rel="stylesheet" href="style.css">
+        
 </head>
 <body>
         <h1>Post Announcements</h1>
@@ -29,23 +30,18 @@
                 <button onclick="ViewAnn()">Browse</button>
 
                 <div>
-                <label>created by:</label>
-                <p id="firstname"></p>
-                <p id="surname"></p>
-                <div></div>
+               
                       
           </div>
           
      
-
-
           <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
    
     
           <script>
               // Your web app's Firebase configuration
               // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-              var firebaseConfig = {
+               var firebaseConfig = {
                 apiKey: "AIzaSyCoXqBGvYHP2wcXLGnu8iR1DHY13An13Vo",
                 authDomain: "eresapplication.firebaseapp.com",
                 databaseURL: "https://eresapplication-default-rtdb.firebaseio.com",
@@ -57,46 +53,49 @@
               };
               // Initialize Firebase
               firebase.initializeApp(firebaseConfig);
-
-    function PostAnn(){
-        var title=document.getElementById('title').value;
-        var description=document.getElementById('description').value;
-        var firstname=document.getElementById('firstname').innerHTML;
-        var surname=document.getElementById('surname').innerHTML;
-        
-           alert('Announcement Posted successfully');
+          
+          
+          
+          function PostAnn(){
+          var title=document.getElementById('title').value;
+          var description=document.getElementById('description').value;
+         
+          
+             var userId=localStorage.getItem('id');
+             firebase.database().ref('User/'+userId).once('value').then(
+             function(snapshot){
+             var role=(snapshot.val() && snapshot.val().Role);
+             var firstname=(snapshot.val() && snapshot.val().Firstname);
+             var surname=(snapshot.val() && snapshot.val().Surname);
+            
+             alert('Announcement Posted successfully');
            
-          var rootRef = firebase.database().ref();
-          var annRef = rootRef.child('Announcements/')
-          var newAnnRef = annRef.push();
-          newAnnRef.set({
+            var rootRef = firebase.database().ref();
+            var annRef = rootRef.child('Announcements/')
+            var newAnnRef = annRef.push();
+             newAnnRef.set({
              title:title,
              description:description,
+             role:role,
              firstname:firstname,
              surname:surname
 
           });
           
-    }
 
-    function ViewAnn()
-    {
-        window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/ViewAnnouncements.html");
-    }
-
-   </script>
-   <script type="text/javascript">
-      var userId=localStorage.getItem('id');
-      firebase.database().ref('User/'+userId).once('value').then(
-              function(snapshot){
-             var firstname=(snapshot.val() && snapshot.val().Firstname);
-             var surname=(snapshot.val() && snapshot.val().Surname);
-
-             document.getElementById('firstname').innerHTML=firstname;
-             document.getElementById('surname').innerHTML=surname;
-
-              });
-   </script>
-    
+        });
+       
+          
+        }
+       
+         
+          
+          function ViewAnn()
+          {
+          window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/ViewAnnouncements.html");
+          }
+          </script>
+          
+       
 </body>
 </html>
