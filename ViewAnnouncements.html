@@ -51,10 +51,10 @@
            function(CurrentRecord){
               var Title = CurrentRecord.val().title;
               var Description = CurrentRecord.val().description;
-              var Role = CurrentRecord.val().Role;
+              var Role = CurrentRecord.val().role;
               var Firstname = CurrentRecord.val().firstname;
               var Surname = CurrentRecord.val().surname;
-              var user = Firstname+" "+Surname;
+              var user = Role+" :"+ Firstname+" "+Surname;
 
               AddAnnouncementsToTable(Title,Description,user)
            }

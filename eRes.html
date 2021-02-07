@@ -46,6 +46,16 @@
         <label>Confirm Password</label>
       </div>
 
+      <div class="selectBox">
+        <label>Gender</label>
+        <select id="gender">
+          <option>Male</option>
+          <option>Female</option>
+         
+        </select>
+       
+      </div><br><br>
+
 
       <div class="selectBox">
         <label>Residence</label>
@@ -112,6 +122,7 @@
      var surname=document.getElementById('surname').value;
      var studnum=document.getElementById('studnum').value;
      var confpassword=document.getElementById('confpassword').value;
+     var gender=document.getElementById('gender').value;
      var role=document.getElementById('role').value;
      var residence =document.getElementById('residence').value;
     
@@ -124,6 +135,7 @@
             Email:email,
             Firstname:firstname,
             Password:password,
+            Gender:gender,
             Residence:residence,
             Role:role,
             Studnum:studnum,
