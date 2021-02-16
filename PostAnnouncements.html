@@ -64,9 +64,9 @@
              var userId=localStorage.getItem('id');
              firebase.database().ref('User/'+userId).once('value').then(
              function(snapshot){
-             var role=(snapshot.val() && snapshot.val().Role);
-             var firstname=(snapshot.val() && snapshot.val().Firstname);
-             var surname=(snapshot.val() && snapshot.val().Surname);
+             var role=(snapshot.val() && snapshot.val().role);
+             var firstname=(snapshot.val() && snapshot.val().firstname);
+             var surname=(snapshot.val() && snapshot.val().surname);
             
              alert('Announcement Posted successfully');
            

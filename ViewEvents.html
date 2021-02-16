@@ -10,8 +10,8 @@
     <div>
     <table id="table">
            <thead>
-                 <th>Title</th>
-                 <th>Description</th>
+                 <th>Event</th>
+                 <th>Date</th>
                  <th>Posted by</th>
            </thead>
            <tbody id="tbody1">
@@ -44,18 +44,21 @@
 
       
 
-        firebase.database().ref('Announcements').once('value',
+        firebase.database().ref('Events').once('value',
        function(AllRecords){
        AllRecords.forEach(
            function(CurrentRecord){
-              var Title = CurrentRecord.val().title;
-              var Description = CurrentRecord.val().description;
+              var Day = CurrentRecord.val().day;
+              var Month = CurrentRecord.val().month;
+              var Year = CurrentRecord.val().year;
+              var Event = CurrentRecord.val().event;
+              var Date = Day+"/"+Month+"/"+Year;
               var Role = CurrentRecord.val().role;
               var Firstname = CurrentRecord.val().firstname;
               var Surname = CurrentRecord.val().surname;
               var user = Role+" :"+ Firstname+" "+Surname;
 
-              AddAnnouncementsToTable(Title,Description,user)
+              AddAnnouncementsToTable(Event,Date,user)
            }
        );
        });
@@ -66,7 +69,7 @@
     window.onload= GetAllData;
     
     var annNo = 0;
-    function AddAnnouncementsToTable(Title,Description,user){
+    function AddAnnouncementsToTable(Event,Date,user){
         var tbody = document.getElementById('tbody1');
         var  trow = document.createElement('tr');
         var  td1 = document.createElement('td');
@@ -75,8 +78,8 @@
         
         
         td1.innerHTML= ++annNo;
-        td1.innerHTML= Title;
-        td2.innerHTML= Description;
+        td1.innerHTML= Event;
+        td2.innerHTML= Date;
         td3.innerHTML= user; 
        
         trow.appendChild(td1); 

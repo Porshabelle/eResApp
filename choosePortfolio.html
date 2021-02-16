@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Choose Portfolio</h1>
+
+    <div class="container">
+        <div class="function_view" onclick="academics();student();">
+            <div class="left">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="right">
+                <p class="title">Academics</p>
+       
+            </div>
+        </div>
+           
+        </div>   
+          <div class="function_view"  onclick="student()" id="social">
+           <div class="left">
+            <i class="fas fa-user-friends"></i>
+           </div>
+           <div class="right">
+           <p class="title">Social</p>
+                   
+           </div>
+          </div>
+       <div class="function_view"  onclick="student()" id="sports">
+        <div class="left">
+            <i class="fas fa-basketball-ball"></i>
+        </div>
+        <div class="right">
+        <p class="title">Sports</p>
+                
+        </div>
+       </div>
+       
+       <div class="function_view"  onclick="student()" id="domestic">
+        <div class="left">
+            <i class="fas fa-dove"></i>
+        </div>
+        <div class="right">
+        <p class="title">Domestic And Religion</p>
+                
+        </div>
+       </div>
+       
+        <div class="function_view"  onclick="student()" id="ram">
+           <div class="left">
+            <i class="fas fa-user-circle"></i>
+           </div>
+           <div class="right">
+           <p class="title">Res Manager/Warden</p>
+                   
+           </div>
+        </div>
+
+        <div class="function_view" onclick="student()" id="caretaker">
+            <div class="left">
+                <i class="fas fa-hand-holding-medical"></i>
+            </div>
+            <div class="right">
+            <p class="title">Caretaker</p>
+                        
+            </div>      
+        </div>  
+       
+        
+       
+       
+       <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
+          
+           
+       <script>
+           // Your web app's Firebase configuration
+           // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+           var firebaseConfig = {
+             apiKey: "AIzaSyCoXqBGvYHP2wcXLGnu8iR1DHY13An13Vo",
+             authDomain: "eresapplication.firebaseapp.com",
+             databaseURL: "https://eresapplication-default-rtdb.firebaseio.com",
+             projectId: "eresapplication",
+             storageBucket: "eresapplication.appspot.com",
+             messagingSenderId: "930888883325",
+             appId: "1:930888883325:web:c8ca7e2c05070ee346e514",
+             measurementId: "G-LDR6RG84KQ"
+           };
+           // Initialize Firebase
+           firebase.initializeApp(firebaseConfig);
+
+           function student()
+           {
+            window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/student.html");
+
+          
+           }
+
+           function academics()
+           {
+            
+               
+            var portfolio="Academics";
+            
+
+             var rootRef= firebase.database().ref();
+             var annRef = rootRef.child('Portfolios')
+             var newAnnRef = annRef.push();
+             newAnnRef.set({
+             Portfolio:portfolio
+            });
+           }
+
+           </script>
+    
+</body>
+</html>

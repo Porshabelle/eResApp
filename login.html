@@ -21,7 +21,7 @@
             
         </div>
         <input  type="submit" onclick="Login()" onclick="GetRole()" name="" value="Login">
-
+        <a href="file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/ForgotPassword.html">Forgot password?</a>
     </div>
 
 
@@ -54,18 +54,26 @@
              var userId=localStorage.getItem('id');
              firebase.database().ref('User/'+userId).once('value').then(
              function(snapshot){
-             var role=(snapshot.val() && snapshot.val().Role);
+             var Role=(snapshot.val() && snapshot.val().role);
 
-             switch(role)
+             switch(Role)
              {
                  case "Residence Manager":
                  window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/residencemanager.html");
                        break;
                  case "Caretaker":
-                 window.location.replace(" file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/caretaker.html");
+                 window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/caretaker.html");
                           break;
+                case "Student":
+                window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/choosePortfolio.html");
+                break;
+                case "Hc":
+                window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/hc.html");
+                break;
+                case "Mentor":
+                window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/mentor.html");
+                break;
 
-                
              }
               });
         

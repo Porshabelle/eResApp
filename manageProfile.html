@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>eRes Application</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+     <div class="registerBox" id="Register" >
+
+      <div class="inputBox">
+           
+        <input type="text" name="firstname" id="firstname" required="">
+        <label>First Name</label>
+        
+      </div>
+
+      <div class="inputBox">
+          
+        <input type="text" name="surname" id="surname" required ="">
+        <label>Surname</label>
+      </div>
+      
+      <div class="inputBox">
+          
+        <input type="text" name="email" id="email" required="">
+        <label>Email Address</label>
+      </div>
+
+      <div class="inputBox">
+           
+        <input type="number" name="student number" id="studnum" required="" readonly="readonly">
+        <label>Student Number</label>
+      </div> 
+
+      <div class="inputBox">
+          
+        <input type="password" name="password" id="password" required="">
+        <label>Password</label>
+      </div>
+
+      <div class="inputBox">
+          
+        <input type="password" name="confpassword" id="confpassword" required="">
+        <label>Confirm Password</label>
+      </div>
+
+
+     <button onclick="Update()">Update</button>
+         
+     </div>
+    
+  
+    
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
+   
+    
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+          apiKey: "AIzaSyCoXqBGvYHP2wcXLGnu8iR1DHY13An13Vo",
+          authDomain: "eresapplication.firebaseapp.com",
+          databaseURL: "https://eresapplication-default-rtdb.firebaseio.com",
+          projectId: "eresapplication",
+          storageBucket: "eresapplication.appspot.com",
+          messagingSenderId: "930888883325",
+          appId: "1:930888883325:web:c8ca7e2c05070ee346e514",
+          measurementId: "G-LDR6RG84KQ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        window.onload = Read;
+
+
+        var firstname, surname, email, studnum, password, confpassword;
+
+        function Read()
+        {
+            firstname = document.getElementById('firstname').value;
+            surname = document.getElementById('surname').value;
+            email = document.getElementById('email').value;
+            studnum = document.getElementById('studnum').value;
+            password = document.getElementById('password').value;
+            confpassword = document.getElementById('confpassword').value;
+
+          
+             var userId=localStorage.getItem('id');
+             firebase.database().ref('User/'+userId).once('value').then(
+             function(snapshot){
+                document.getElementById('firstname').value=(snapshot.val() && snapshot.val().firstname);
+                document.getElementById('surname').value=(snapshot.val() && snapshot.val().surname);
+                document.getElementById('email').value=(snapshot.val() && snapshot.val().email);
+                document.getElementById('studnum').value=(snapshot.val() && snapshot.val().studNum);
+                document.getElementById('password').value=(snapshot.val() && snapshot.val().password);
+                document.getElementById('confpassword').value=(snapshot.val() && snapshot.val().confpassword);
+                 
+               
+              });
+              localStorage.setItem('id',id);
+        }
+
+        function Update()
+        {
+            
+            alert("Data updated!")
+            var userId=localStorage.getItem('id');
+              firebase.database().ref('User/'+userId).update({
+                 firstname: document.getElementById('firstname').value,
+                 surname: document.getElementById('surname').value,
+                 email:document.getElementById('email').value
+
+              });
+        
+        localStorage.setItem('id',id);
+         
+    
+        }
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h1>Complaints portal</h1>
+
+    <div id="messages" class="messages"></div>
+
+    <input placeholder="Enter your message here!" id="message" class="message"/>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
+   
+    
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+          apiKey: "AIzaSyCoXqBGvYHP2wcXLGnu8iR1DHY13An13Vo",
+          authDomain: "eresapplication.firebaseapp.com",
+          databaseURL: "https://eresapplication-default-rtdb.firebaseio.com",
+          projectId: "eresapplication",
+          storageBucket: "eresapplication.appspot.com",
+          messagingSenderId: "930888883325",
+          appId: "1:930888883325:web:c8ca7e2c05070ee346e514",
+          measurementId: "G-LDR6RG84KQ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        let database = firebase.database();
+         
+        //var id = firebase.auth().currentUser.uid;
+             var userId=localStorage.getItem('id');
+             firebase.database().ref('User/'+userId).once('value').then(
+             function(snapshot){
+             var firstname=(snapshot.val() && snapshot.val().Firstname);
+             var surname=(snapshot.val() && snapshot.val().Surname);
+             var role=(snapshot.val() && snapshot.val().Role);
+             var user = firstname+" "+surname;
+
+             let input = document.getElementById("message");
+
+             input.addEventListener('keypress',function(event)
+             {
+                 if(event.key == "Enter")
+                 {
+                    database.ref("messages").push({
+                        User: user,
+                        Value: input.value,
+                        Role: role
+                    })
+                    input.value = ""
+                 }
+             })
+
+              
+
+             database.ref("messages").on("child_added",function(message){
+                 let messages = document.getElementById("messages");
+                 let User = message.val().User;
+                 let Value = message.val().Value;
+
+                 let div = document.createElement("div");
+                 let span = document.createElement("span");
+                 span.innerHTML = "@" + User;
+                 let p = document.createElement("p");
+                 p.innerHTML = Value;
+
+                 div.appendChild(span);
+                 div.appendChild(p);
+
+                messages.appendChild(div);
+                messages.scrollTop = messages.scrollHeight;
+             })
+            
+              });
+             // localStorage.setItem('id',id);
+
+        </script>
+    
+</body>
+</html>

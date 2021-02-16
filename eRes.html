@@ -70,7 +70,6 @@
           <option>Mannheim Men</option>
           <option>Huis Technikon</option>
         </select>
-       
       </div><br><br>
 
          <div class="selectBox">
@@ -109,12 +108,7 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
-   
-   
-
     function RegisterUser(){
-
-     
 
      var email=document.getElementById('email').value;
      var password=document.getElementById('password').value;
@@ -125,21 +119,20 @@
      var gender=document.getElementById('gender').value;
      var role=document.getElementById('role').value;
      var residence =document.getElementById('residence').value;
-    
 
      firebase.auth().createUserWithEmailAndPassword(email,password).then(function(){
            alert('User Registered successfully');
            var id =firebase.auth().currentUser.uid;
            firebase.database().ref('User/'+id).set({
-            ConfPassword:confpassword,
-            Email:email,
-            Firstname:firstname,
-            Password:password,
-            Gender:gender,
-            Residence:residence,
-            Role:role,
-            Studnum:studnum,
-            Surname:surname
+            confPassword:confpassword,
+            email:email,
+            firstname:firstname,
+            password:password,
+            gender:gender,
+            residence:residence,
+            role:role,
+            studNum:studnum,
+            surname:surname
            });
 
      }).catch(function(error){  
