@@ -7,7 +7,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" href="css/all.min.css">
-
 </head>
 <body>
     <h1>Complaints portal</h1>
@@ -45,9 +44,9 @@
              var userId=localStorage.getItem('id');
              firebase.database().ref('User/'+userId).once('value').then(
              function(snapshot){
-             var firstname=(snapshot.val() && snapshot.val().firstname);
-             var surname=(snapshot.val() && snapshot.val().surname);
-             var role=(snapshot.val() && snapshot.val().role);
+             var firstname=(snapshot.val() && snapshot.val().Firstname);
+             var surname=(snapshot.val() && snapshot.val().Surname);
+             var role=(snapshot.val() && snapshot.val().Role);
              var user = firstname+" "+surname;
 
              let input = document.getElementById("message");
@@ -88,9 +87,9 @@
               });
              // localStorage.setItem('id',id);
 
-             function Goback()
+function Goback()
 {
-    window.location.replace("login.html");
+    window.location.replace("residencemanager.html");
     
 }
 

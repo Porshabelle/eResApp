@@ -5,33 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="css/all.min.css">
+    <link rel="stylesheet" href="/css/fontawesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+   
    
 </head>
 <body>
-    
-    <div class="container">
- <div class="function_view" onclick="ViewAnn()">
+
+    <h1>Hc Domestics</h1>
+   
+<div class="container">
+ <div class="function_view" onclick="postAnn()">
      <div class="left">
-        <i class="fas fa-bell"></i>
+        <i class="fas fa-upload"></i>
      </div>
      <div class="right">
-         <p class="title">Browse Announcements</p>
+         <p class="title">Post Announcements</p>
 
      </div>
  </div>
     
- 
-<div class="function_view" onclick="Write()">
- <div class="left">
-    <i class="fas fa-comments"></i>
- </div>
- <div class="right">
- <p class="title">Write Complaints</p>
-         
- </div>
-</div>
+ </div>   
+   <div class="function_view" onclick="ViewComplaints()">
+    <div class="left">
+        <i class="fas fa-comments"></i>
+    </div>
+    <div class="right">
+    <p class="title">Respond to Complaints</p>
+            
+    </div>
+   </div>
+
 
 
  <div class="function_view" onclick="UpdateProfile()">
@@ -41,19 +46,18 @@
     <div class="right">
     <p class="title">Manage Profile</p>
             
-    </div>
+</div>
  </div>
 
- <div class="function_view" onclick="ViewEvents()">
+ <div class="function_view" onclick="AddEvents()">
     <div class="left">
-        <i class="fas fa-calendar-alt"></i>
+        <i class="fas fa-cog"></i>
     </div>
     <div class="right">
-    <p class="title">View Events</p>
+    <p class="title">Update Events Calender</p>
             
     </div>
  </div>
-
 
  <div class="function_view" onclick="Logout()">
     <div class="left">
@@ -65,6 +69,7 @@
     </div>      
 </div>  
 </div>
+
 <div class="back"><i class="fas fa-hand-point-left" onclick="Goback()"></i>
     <p>Go back</p>
 </div><br><br>
@@ -89,33 +94,31 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-
-    function Write()
-    {
-       window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/complaints.html");
-    }
-
-    function ViewAnn()
-    {
-        window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/ViewAnnouncements.html");
-    }
-    
-    function UpdateProfile()
-  {
-    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/manageProfile.html");
-  }
-
-  function ViewEvents()
-  {
-    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/ViewEvents.html");
-  }
-
-  function Goback()
+function postAnn()
 {
-    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/choosePortfolio.html");
-    
+    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/PostAnnouncements.html");
 }
 
+function ViewComplaints()
+{
+    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/complaints.html");
+}
+
+function UpdateProfile()
+{
+    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/manageProfile.html");
+}
+
+function AddEvents()
+{
+    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/writeEvents.html");
+}
+
+function Goback()
+{
+    window.location.replace("login.html");
+    
+}
 
 
 function Logout()
@@ -125,8 +128,8 @@ function Logout()
         window.location.href = "login.html";
 }
 
- </script>
 
-
+</script>
+      
 </body>
 </html>

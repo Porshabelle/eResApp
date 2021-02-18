@@ -158,3 +158,36 @@ table, th,td{
 {
   display: inline-block;
 }
+
+.postAnnBox
+{
+   position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    padding: 40px;
+    background: rgba(0, 0, 0, .8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 10px;
+}
+
+
+
+.postAnnBox .inputBox input:focus ~ label,
+.postAnnBox .inputBox input:valid ~ label
+{
+   top: -20px;
+   left: 0;
+   color: cornflowerblue;
+   font-size: 12px;
+}
+
+td{
+   word-break: break-all;
+}
+
+.back i{
+   font-size: 40px;
+}

@@ -10,6 +10,7 @@
    
 </head>
 <body>
+    
     <div class="container">
         <div class="function_view" onclick="postAnn()">
             <div class="left">
@@ -24,7 +25,7 @@
  
 
 
- <div class="function_view">
+ <div class="function_view" onclick="UpdateProfile()">
     <div class="left">
         <i class="fas fa-cog"></i>
     </div>
@@ -34,7 +35,19 @@
     </div>
  </div>
 
- <div class="function_view">
+</div>   
+<div class="function_view" onclick="ViewComplaints()">
+ <div class="left">
+     <i class="fas fa-comments"></i>
+ </div>
+ <div class="right">
+ <p class="title">View Complaints</p>
+         
+ </div>
+</div>
+
+
+ <div class="function_view" onclick="Logout()">
     <div class="left">
         <i class="fas fa-sign-out-alt"></i>
     </div>
@@ -44,6 +57,11 @@
     </div>      
 </div>  
 </div>
+<div class="back"><i class="fas fa-hand-point-left" onclick="Goback()"></i>
+    <p>Go back</p>
+</div><br><br>
+
+
 
 
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
@@ -66,10 +84,34 @@
     firebase.initializeApp(firebaseConfig);
 
 
-    function Write()
-    {
-       window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/complaints.html");
-    }
+function postAnn()
+{
+    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/PostAnnouncements.html");
+}
+
+function ViewComplaints()
+{
+    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/complaints.html");
+}
+
+function UpdateProfile()
+{
+    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/manageProfile.html");
+}
+
+function Goback()
+{
+    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/login.html");
+    
+}
+
+
+function Logout()
+{
+    firebase.auth().signOut();
+        alert("Signed out!");
+        window.location.href = "login.html";
+}
 
  </script>
 

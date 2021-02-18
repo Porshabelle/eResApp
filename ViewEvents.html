@@ -2,15 +2,17 @@
 <html >
 <head>
     
-    <title>View Announcements</title>
+    <title>View Events</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/all.min.css">
 </head>
 <body>
-    <h1>View Announcements</h1>
+    <h1>View Events</h1>
     <div>
     <table id="table">
            <thead>
-                 <th>Event</th>
+                 <th>Event Title</th>
+                 <th>Description</th>
                  <th>Date</th>
                  <th>Posted by</th>
            </thead>
@@ -20,6 +22,10 @@
          
     </table>
     </div>
+    <div class="back"><i class="fas fa-hand-point-left" onclick="Goback()"></i>
+        <p>Go back</p>
+    </div><br><br>
+    
   
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
    
@@ -52,13 +58,14 @@
               var Month = CurrentRecord.val().month;
               var Year = CurrentRecord.val().year;
               var Event = CurrentRecord.val().event;
+              var Description = CurrentRecord.val().description;
               var Date = Day+"/"+Month+"/"+Year;
               var Role = CurrentRecord.val().role;
               var Firstname = CurrentRecord.val().firstname;
               var Surname = CurrentRecord.val().surname;
               var user = Role+" :"+ Firstname+" "+Surname;
 
-              AddAnnouncementsToTable(Event,Date,user)
+              AddAnnouncementsToTable(Event,Description,Date,user)
            }
        );
        });
@@ -69,20 +76,23 @@
     window.onload= GetAllData;
     
     var annNo = 0;
-    function AddAnnouncementsToTable(Event,Date,user){
+    function AddAnnouncementsToTable(Event,Description,Date,user){
         var tbody = document.getElementById('tbody1');
         var  trow = document.createElement('tr');
         var  td1 = document.createElement('td');
+        var  td4 = document.createElement('td');
         var  td2 = document.createElement('td');
         var  td3 = document.createElement('td');
         
         
         td1.innerHTML= ++annNo;
         td1.innerHTML= Event;
+        td4.innerHTML=Description;
         td2.innerHTML= Date;
         td3.innerHTML= user; 
        
         trow.appendChild(td1); 
+        trow.appendChild(td4); 
         trow.appendChild(td2);
         trow.appendChild(td3);
         tbody.appendChild(trow);
@@ -90,10 +100,16 @@
 
     }
 
-     
+function Goback()
+{
+    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/choosePortfolio.html");
+    
+}
+
 
 </script>
- 
+
+
     
 </body>
 </html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div class="postAnnBox">
+    <section class="col-sm-6">
+        <div class="form-group">
+        <div class="input-group" id="datetimepicker">
+           <input type="text" class="form-control" id="date">
+           <span class="input-group-addon" >
+               <span class="glyphicon glyphicon-calendar"></span>
+           </span>
+        </div>
+    </div>
+    </section>
+    <div class="inputBox">
+        <label for="title">Title</label>
+        </div>
+    <div><input type="text" class="event" id="event"></div>
+    <div>
+        <label for="description">Description</label>
+        </div>
+    <div >
+    <textarea id="description" tabindex="1" aria-label="Message Body" spellcheck="true"></textarea>
+    </div>
+
+    <div><button onclick="addEvents()" >Add Event</button></div>
+    </div>
+    <div class="back"><i class="fas fa-hand-point-left" onclick="Goback()"></i>
+        <p>Go back</p>
+    </div><br><br>
+    
+   
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
+   
+    
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+         var firebaseConfig = {
+          apiKey: "AIzaSyCoXqBGvYHP2wcXLGnu8iR1DHY13An13Vo",
+          authDomain: "eresapplication.firebaseapp.com",
+          databaseURL: "https://eresapplication-default-rtdb.firebaseio.com",
+          projectId: "eresapplication",
+          storageBucket: "eresapplication.appspot.com",
+          messagingSenderId: "930888883325",
+          appId: "1:930888883325:web:c8ca7e2c05070ee346e514",
+          measurementId: "G-LDR6RG84KQ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+    function addEvents()
+    {
+        var date= document.getElementById('date').value;
+        var Day = date.substring(3,5);
+        var Month = date.substring(0,2);
+        var Year = date.substring(6,10);
+
+        
+        var userId=localStorage.getItem('id');
+             firebase.database().ref('User/'+userId).once('value').then(
+             function(snapshot){
+             var role=(snapshot.val() && snapshot.val().role);
+             var firstname=(snapshot.val() && snapshot.val().firstname);
+             var surname=(snapshot.val() && snapshot.val().surname);
+            
+             alert('Event Added successfully');
+           
+            var rootRef = firebase.database().ref();
+            var annRef = rootRef.child('Events/')
+            var newAnnRef = annRef.push();
+             newAnnRef.set({
+             event:document.getElementById('event').value,
+             description:document.getElementById('description').value,
+             day:Day,
+             month:Month,
+             year:Year,
+             role:role,
+             firstname:firstname,
+             surname:surname
+
+          });
+          
+
+        });
+
+
+    }
+
+    function Goback()
+ {
+    window.location.replace("login.html");
+    
+ }
+
+    </script>
+
+    <script type="text/javascript">
+    $(function(){
+        $('#datetimepicker').datetimepicker();
+    });
+
+   
+    
+
+    </script>
+</body>
+</html>

@@ -4,6 +4,7 @@
     
     <title>View Announcements</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/all.min.css">
 </head>
 <body>
     <h1>View Announcements</h1>
@@ -20,6 +21,9 @@
          
     </table>
     </div>
+    <div class="back"><i class="fas fa-hand-point-left" onclick="Goback()"></i>
+        <p>Go back</p>
+    </div><br><br>
   
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
    
@@ -87,7 +91,11 @@
 
     }
 
-     
+    function Goback()
+{
+    window.location.replace("choosePortfolio.html");
+    
+}
 
 </script>
  

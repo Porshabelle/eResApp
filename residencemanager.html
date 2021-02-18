@@ -47,7 +47,7 @@
 </div>
  </div>
 
- <div class="function_view">
+ <div class="function_view" onclick="AddEvents()">
     <div class="left">
         <i class="fas fa-cog"></i>
     </div>
@@ -67,6 +67,10 @@
     </div>      
 </div>  
 </div>
+<div class="back"><i class="fas fa-hand-point-left" onclick="Goback()"></i>
+    <p>Go back</p>
+</div><br><br>
+
 
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
    
@@ -94,12 +98,23 @@ function postAnn()
 
 function ViewComplaints()
 {
-    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/complaints.html");
+    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/respondToComplaints.html");
 }
 
 function UpdateProfile()
 {
     window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/manageProfile.html");
+}
+
+function AddEvents()
+{
+    window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/writeEvents.html");
+}
+
+function Goback()
+{
+    window.location.replace("login.html");
+    
 }
 
 

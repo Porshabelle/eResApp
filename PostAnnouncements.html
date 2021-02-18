@@ -6,6 +6,7 @@
              <h1>Announcements</h1>
         </title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" type="text/css" href="css/all.min.css">
         
 </head>
 <body>
@@ -16,14 +17,14 @@
                 <label for="title">Title</label>
                 </div>
                 <div>
-                <input type="text"  name="title" id="title" placeholder="Enter title"><br><br>
+                <input type="text"  name="title" id="title" ><br><br>
                 </div>
                
                 <div>
                 <label for="description">Description</label>
                 </div>
                 <div >
-                <input type="text"  name="description" id="description" ><br><br>
+                <textarea id="description" tabindex="1" aria-label="Message Body" spellcheck="true"></textarea>
                 </div>
 
                 <button onclick="PostAnn()">Post</button>
@@ -33,6 +34,9 @@
                
                       
           </div>
+          <div class="back"><i class="fas fa-hand-point-left" onclick="Goback()"></i>
+                <p>Go back</p>
+            </div><br><br>
           
      
           <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
@@ -88,7 +92,11 @@
           
         }
        
-         
+        function Goback()
+   {
+    window.location.replace("login.html");
+    
+   }
           
           function ViewAnn()
           {

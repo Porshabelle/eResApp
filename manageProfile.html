@@ -4,6 +4,7 @@
     
     <title>eRes Application</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/all.min.css">
 
 
 </head>
@@ -52,6 +53,9 @@
          
      </div>
     
+     <div class="back"><i class="fas fa-hand-point-left" onclick="Goback()"></i>
+      <p>Go back</p>
+     </div><br><br>
   
     
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
@@ -102,6 +106,12 @@
               });
               localStorage.setItem('id',id);
         }
+
+  function Goback()
+{
+    window.location.replace("login.html");
+    
+}
 
         function Update()
         {

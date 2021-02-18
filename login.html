@@ -4,6 +4,7 @@
     
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/all.min.css">
 </head>
 <body>
     <div class="loginBox">
@@ -23,6 +24,10 @@
         <input  type="submit" onclick="Login()" onclick="GetRole()" name="" value="Login">
         <a href="file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/ForgotPassword.html">Forgot password?</a>
     </div>
+
+    <div class="back"><i class="fas fa-hand-point-left" onclick="Goback()"></i>
+        <p>Go back</p>
+    </div><br><br>
 
 
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>
@@ -66,13 +71,19 @@
                           break;
                 case "Student":
                 window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/choosePortfolio.html");
-                break;
-                case "Hc":
-                window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/hc.html");
-                break;
+                          break;
+                case "Hc Academics":
+                window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/hcAcademics.html");
+                          break;
                 case "Mentor":
                 window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/mentor.html");
-                break;
+                          break;
+                case "Hc Sports":
+                window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/hcSports.html");
+                          break;
+                case "Hc Domestic":
+                window.location.replace("file:///C:/Users/mmaba/OneDrive/Desktop/WebApp%20(1)/WebApp/WebApp/WebApp/eResApp/hcDomestics.html");
+                          break;
 
              }
               });
@@ -85,6 +96,13 @@
 
         });
     }
+
+    function Goback()
+{
+    window.location.replace("Register.html");
+    
+}
+
 
    
 </script>

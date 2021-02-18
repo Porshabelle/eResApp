@@ -79,6 +79,9 @@
             <option>Residence Manager</option>
             <option>Mentor</option>
             <option>Caretaker</option>
+            <option>Hc Academics</option>
+            <option>Hc Domestic</option>
+            <option>Hc Sports</option>
           </select>
          
         </div><br><br>
@@ -110,6 +113,8 @@
 
     function RegisterUser(){
 
+      val();
+
      var email=document.getElementById('email').value;
      var password=document.getElementById('password').value;
      var firstname=document.getElementById('firstname').value;
@@ -136,9 +141,28 @@
            });
 
      }).catch(function(error){  
+           alert("Wrong input!")
            var errorcode=error.code;
            var errormessage=error.message;
      });
+    }
+
+    function val()
+    {
+      var email=document.getElementById('email').value;
+     var password=document.getElementById('password').value;
+     var firstname=document.getElementById('firstname').value;
+     var surname=document.getElementById('surname').value;
+     var studnum=document.getElementById('studnum').value;
+     var confpassword=document.getElementById('confpassword').value;
+     var gender=document.getElementById('gender').value;
+     var role=document.getElementById('role').value;
+     var residence =document.getElementById('residence').value;
+
+     if(email=="")
+     {
+       document.getElementById('email').innerHTML="Please enter email";
+     }
     }
 
     function Login(){
